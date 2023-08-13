@@ -13,7 +13,9 @@ export default function SignUp() {
     password: "",
   });
 
-  const signUpHandler = async () => {};
+  const signUpHandler = async () => {
+    alert("signing up 😊...")
+  };
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen py-2 bg-black">
@@ -60,9 +62,12 @@ export default function SignUp() {
         placeholder="Enter your Password"
       />
       <button
+          onClick={signUpHandler}
           className="p-2 border border-gray-300 rounded-lg mb-4 focus:outline-none focus:border-gray-600 text-white px-10"
       >sign up here
       </button>
+      <text className="text-white">Already have an account ?</text>
+      <Link href="/login" className="text-white border border-color-white rounded-2xl px-10 mt-5">Login</Link>
     </div>
   );
 }
