@@ -12,7 +12,7 @@ export default function LoginPage() {
   });
 
   const loginHandler = async () => {
-    alert("login ...")
+    alert("login ...");
   };
 
   return (
@@ -43,13 +43,19 @@ export default function LoginPage() {
         }}
         placeholder="Enter your Password"
       />
-            <button
-          onClick={loginHandler}
-          className="p-2 border border-gray-300 rounded-lg mb-4 focus:outline-none focus:border-gray-600 text-white px-10"
-      >login here
+      <button
+        onClick={loginHandler}
+        className="p-2 border border-gray-300 rounded-lg mb-4 focus:outline-none focus:border-gray-600 text-white px-10"
+      >
+        login here
       </button>
       <text className="text-white">new user ?</text>
-      <Link href="/login" className="text-white border border-color-white rounded-2xl px-10 mt-5">Login</Link>
+      <Link
+        href="/login"
+        className="text-white border border-color-white rounded-2xl px-10 mt-5"
+      >
+        Login
+      </Link>
     </div>
   );
 }

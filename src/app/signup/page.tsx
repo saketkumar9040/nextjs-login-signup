@@ -4,17 +4,31 @@ import Link from "next/link";
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import axios from "axios";
+import toast from "react-hot-toast";
 
 export default function SignUp() {
+  const router = useRouter();
   const [user, setUser] = useState({
     name: "",
     email: "",
     phone: "",
     password: "",
   });
+  const[buttonDisabled,setButtonDisabled] = useState(true);
+  // const[loading,setLoading] = useState(false);
 
   const signUpHandler = async () => {
-    alert("signing up 😊...")
+    try {
+      if(!user.name || !user.email || !user.phone || !user.password){
+        return alert("please enter all the details");
+      }
+      const response = await axios.post("/api/users/signup",user);
+      console.log(response.data)
+      router.push("/login")
+    } catch (error:any) {
+       console.log(error);
+       toast.error(error.message)
+    }
   };
 
   return (
