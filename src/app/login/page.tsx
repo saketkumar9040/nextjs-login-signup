@@ -19,10 +19,7 @@ export default function LoginPage() {
         return alert("please enter all the details");
       }
       const request = axios.post("/api/users/login", user);
-      if(!request){
-        return toast.error("login failed")
-      }
-      // console.log(request);
+      console.log(request);
       router.push("/profile");
       toast.success("login successfully")
      } catch (error:any) {
@@ -67,10 +64,10 @@ export default function LoginPage() {
       </button>
       <text className="text-white">new user ?</text>
       <Link
-        href="/login"
+        href="/signup"
         className="text-white border border-color-white rounded-2xl px-10 mt-5"
       >
-        Login
+        sign up
       </Link>
     </div>
   );
