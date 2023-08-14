@@ -24,16 +24,19 @@ export async function POST(request: NextRequest) {
       );
     }
     console.log(userExists);
-    let comparePassword = await bcryptjs.compare(password, userExists.password);
+    console.log(password)
+
+    // COMPARE USER PASSWORD WITH SAVED PASSWORD =========================================>
+    let comparePassword = await bcryptjs.compare(password,userExists.password)
     console.log(comparePassword);
     if (!comparePassword) {
       return NextResponse.json(
-        { message: "please enter the correct password" },
+        { error: "please enter the correct password" },
         { status: 400 }
       );
     }
 
-    // CREATE TOKEN FOR USER =============================================>
+    // CREATE TOKEN FOR USER ==============================================================>
 
     const tokenData = {
       id: userExists._id,
@@ -41,10 +44,10 @@ export async function POST(request: NextRequest) {
       isAdmin: userExists.isAdmin,
     };
 
-    // CREATE TOKEN USING JWT ======================================================>
+    // CREATE TOKEN USING JWT ==============================================================>
 
     const token = await jwt.sign(tokenData, process.env.TOKEN_SECRET!, {
-      expiresIn: "1d",
+        expiresIn: "1d",
     });
 
     const response = NextResponse.json(
