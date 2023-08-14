@@ -28,14 +28,14 @@ export async function POST(request: NextRequest) {
 
     // SAVING USER TO DATABASE ==============================================>
 
-    // const newUser = await new User({
-    //   name,
-    //   email,
-    //   phone,
-    //   hashPassword,
-    // });
+    const newUser = {
+      name,
+      email,
+      phone,
+      password:hashPassword,
+    };
 
-    const savedUser = await User.create(reqBody);
+    const savedUser = await User.create(newUser);
     console.log(savedUser);
 
     return NextResponse.json(

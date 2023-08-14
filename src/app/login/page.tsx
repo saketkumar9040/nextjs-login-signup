@@ -4,15 +4,31 @@ import Link from "next/link";
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import axios from "axios";
+import toast from "react-hot-toast/headless";
 
 export default function LoginPage() {
+  const router = useRouter();
   const [user, setUser] = useState({
     email: "",
     password: "",
   });
 
   const loginHandler = async () => {
-    alert("login ...");
+     try {
+      if (!user.email || !user.password) {
+        return alert("please enter all the details");
+      }
+      const request = axios.post("/api/users/login", user);
+      if(!request){
+        return toast.error("login failed")
+      }
+      // console.log(request);
+      router.push("/profile");
+      toast.success("login successfully")
+     } catch (error:any) {
+       console.log(error.message);
+       toast.error(error.message)
+     }
   };
 
   return (

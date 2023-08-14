@@ -23,7 +23,7 @@ export default function SignUp() {
         return alert("please enter all the details");
       }
       const response = await axios.post("/api/users/signup",user);
-      console.log(response.data)
+      // console.log(response.data)
       router.push("/login")
     } catch (error:any) {
        console.log(error);
