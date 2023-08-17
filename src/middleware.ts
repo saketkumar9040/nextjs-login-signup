@@ -7,7 +7,7 @@ export async function middleware(request: NextRequest) {
   const isPublicPath = path === "/login" || path === "/signup";
 
   const isTokenPresent = request.cookies.get("token")?.value || "";
-  console.log(isTokenPresent)
+  // console.log(isTokenPresent)
 
   if (isPublicPath && isTokenPresent) {
     return NextResponse.redirect(new URL("/profile", request.nextUrl));
@@ -19,5 +19,5 @@ export async function middleware(request: NextRequest) {
 
 // See "Matching Paths" below to learn more
 export const config = {
-  matcher: ["/", "/signup", "/login", "/profile"],
+  matcher: ["/", "/signup", "/login", "/profile","/profile/:id*"],
 };
