@@ -8,8 +8,8 @@ import { useRouter } from "next/navigation";
 export default function ProfilePage() {
    const router = useRouter();
 
-  const logoutHandler = () => {
-    let request = axios.get("api/users/logout");
+  const logoutHandler = async() => {
+    let request =await axios.get("api/users/logout");
     router.push("/login");
     toast.success("logout successfully😊");
   };
