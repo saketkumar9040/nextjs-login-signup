@@ -24,11 +24,10 @@ export async function POST(request: NextRequest) {
       );
     }
     console.log(userExists);
-    console.log(password)
 
     // COMPARE USER PASSWORD WITH SAVED PASSWORD =========================================>
     let comparePassword = await bcryptjs.compare(password,userExists.password)
-    console.log(comparePassword);
+    // console.log(comparePassword);
     if (!comparePassword) {
       return NextResponse.json(
         { error: "please enter the correct password" },
