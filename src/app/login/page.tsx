@@ -18,7 +18,7 @@ export default function LoginPage() {
       if (!user.email || !user.password) {
         return alert("please enter all the details");
       }
-      const request = axios.post("/api/users/login", user);
+      const request =await axios.post("/api/users/login", user);
       console.log(request);
       router.push("/profile");
       toast.success("login successfully")
